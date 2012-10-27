@@ -1,0 +1,36 @@
+Create IP List from JPNIC.
+
+input file format (http://www.nic.ad.jp/ja/dns/jp-addr-block.html and http://www.nic.ad.jp/ja/dns/ap-addr-block.html)
+
+133.0.0.0 133.255.255.255
+192.50.0.0 192.50.255.255
+192.218.0.0 192.218.255.255
+192.244.0.0 192.244.255.255
+202.11.0.0 202.11.255.255
+202.13.0.0 202.13.255.255
+202.15.0.0 202.19.255.255
+202.23.0.0 202.26.255.255
+202.32.0.0 202.35.255.255
+
+outpu file format
+
+133.*
+192.50.*
+192.218.*
+192.244.*
+202.11.*
+202.13.*
+202.15.*
+202.16.*
+202.17.*
+202.18.*
+
+Usage:
+     create_jpnic_ip_list.pl -f listfile
+
+        ex) ./create_jpnic_ip_list.pl -f jpnic_ip.list
+
+     Options:
+        -file -f                        set list file
+        -help -h                        brief help message
+        -version -v                     brief version
