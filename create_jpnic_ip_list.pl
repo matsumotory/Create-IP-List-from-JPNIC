@@ -28,13 +28,13 @@ foreach my $line (@data) {
 
     chomp $line;
     my ($startip, $endip) = split " ", $line;
-    my @sip_seg = split '\.', $startip;
-    my @eip_seg = split '\.', $endip;
+    my @sip_oct = split '\.', $startip;
+    my @eip_oct = split '\.', $endip;
 
-    next if print_iprage($sip_seg[0], $eip_seg[0], "");
-    next if print_iprage($sip_seg[1], $eip_seg[1], $sip_seg[0] . ".");
-    next if print_iprage($sip_seg[2], $eip_seg[2], $sip_seg[0] . "." . $sip_seg[1] . ".");
-    next if print_iprage($sip_seg[3], $eip_seg[3], $sip_seg[0] . "." . $sip_seg[1] . "." . $sip_seg[2] . ".");
+    next if print_iprage($sip_oct[0], $eip_oct[0], "");
+    next if print_iprage($sip_oct[1], $eip_oct[1], $sip_oct[0] . ".");
+    next if print_iprage($sip_oct[2], $eip_oct[2], $sip_oct[0] . "." . $sip_oct[1] . ".");
+    next if print_iprage($sip_oct[3], $eip_oct[3], $sip_oct[0] . "." . $sip_oct[1] . "." . $sip_oct[2] . ".");
 }
 
 
