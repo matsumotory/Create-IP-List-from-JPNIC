@@ -45,12 +45,12 @@ sub print_iprage {
     return 0 if ($start eq $end);
  
     if ($start eq "0" && $end eq "255") {
-        print $same_segment . "*\n";
+        print $same_segment . "*,";
         return 1;
     }
 
     foreach my $n ($start .. $end) {
-        print $same_segment . $n . ".*\n";
+        print $same_segment . $n . ".*,";
     }
     return 1;
 }
