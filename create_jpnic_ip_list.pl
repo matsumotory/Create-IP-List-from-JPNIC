@@ -31,26 +31,34 @@ foreach my $line (@data) {
     my @sip_oct = split '\.', $startip;
     my @eip_oct = split '\.', $endip;
 
-    next if print_iprage($sip_oct[0], $eip_oct[0], "");
-    next if print_iprage($sip_oct[1], $eip_oct[1], $sip_oct[0] . ".");
-    next if print_iprage($sip_oct[2], $eip_oct[2], $sip_oct[0] . "." . $sip_oct[1] . ".");
-    next if print_iprage($sip_oct[3], $eip_oct[3], $sip_oct[0] . "." . $sip_oct[1] . "." . $sip_oct[2] . ".");
+    next if print_iprage($sip_oct[0], $eip_oct[0], "", 1);
+    next if print_iprage($sip_oct[1], $eip_oct[1], $sip_oct[0], 2);
+    next if print_iprage($sip_oct[2], $eip_oct[2], $sip_oct[0] . "." . $sip_oct[1], 3);
+    next if print_iprage($sip_oct[3], $eip_oct[3], $sip_oct[0] . "." . $sip_oct[1] . "." . $sip_oct[2], 4);
 }
 
 
 sub print_iprage {
 
-    my ($start, $end, $same_segment) = @_;
+    my ($start, $end, $same_segment, $same_oct) = @_;
 
     return 0 if ($start eq $end);
  
     if ($start eq "0" && $end eq "255") {
-        print $same_segment . "*, ";
+        print $same_segment;
+        foreach my $count ($same_oct..4) {
+            print ".*";
+        }
+        print ", ";
         return 1;
     }
 
     foreach my $n ($start .. $end) {
-        print $same_segment . $n . ".*, ";
+        print $same_segment . "." . $n;
+        foreach my $count ($same_oct+1..4) {
+            print ".*";
+        }
+        print ", ";
     }
     return 1;
 }
